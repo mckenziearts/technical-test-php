@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+use Yieldstudio\TechnicalTestPhp\Tests\TestCase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -10,3 +14,5 @@
 | need to change it using the "uses()" function to bind a different classes or traits.
 |
 */
+
+uses(TestCase::class)->in('Unit');

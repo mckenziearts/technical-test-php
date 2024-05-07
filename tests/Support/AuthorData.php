@@ -1,11 +1,15 @@
 <?php
 
-namespace YieldStudio\TechnicalTestPhp\Tests\Support;
+declare(strict_types=1);
 
-use YieldStudio\TechnicalTestPhp\Data;
+namespace Yieldstudio\TechnicalTestPhp\Tests\Support;
 
-class AuthorData extends Data {
+use Yieldstudio\TechnicalTestPhp\Attributes\Groups;
+use Yieldstudio\TechnicalTestPhp\Attributes\MapOutputName;
+use Yieldstudio\TechnicalTestPhp\Data;
 
+class AuthorData extends Data
+{
     #[Groups('public'), MapOutputName('id')]
     public string $uuid;
 
@@ -18,4 +22,16 @@ class AuthorData extends Data {
     #[Groups('admin')]
     public string $phoneNumber;
 
+    public function __construct(
+        string $uuid,
+        string $firstname,
+        string $lastname,
+        string $phoneNumber,
+    )
+    {
+        $this->uuid = $uuid;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->phoneNumber = $phoneNumber;
+    }
 }

@@ -1,12 +1,15 @@
 <?php
 
-namespace YieldStudio\TechnicalTestPhp\Tests\Support;
+declare(strict_types=1);
 
+namespace Yieldstudio\TechnicalTestPhp\Tests\Support;
 
-use YieldStudio\TechnicalTestPhp\Data;
+use Yieldstudio\TechnicalTestPhp\Attributes\Groups;
+use Yieldstudio\TechnicalTestPhp\Attributes\MapOutputName;
+use Yieldstudio\TechnicalTestPhp\Data;
 
-class PostData extends Data {
-
+class PostData extends Data
+{
     #[Groups('public'), MapOutputName('id')]
     public string $uuid;
 
@@ -22,4 +25,18 @@ class PostData extends Data {
     #[Groups('public')]
     public AuthorData $author;
 
+    public function __construct(
+        string $uuid,
+        string $title,
+        string $content,
+        int $viewsCount,
+        AuthorData $author,
+    )
+    {
+        $this->uuid = $uuid;
+        $this->title = $title;
+        $this->content = $content;
+        $this->viewsCount = $viewsCount;
+        $this->author = $author;
+    }
 }
